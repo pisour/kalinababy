@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Shop 💝</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #ffe4e1, #ffb6c1);
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #d6336c;
+      font-size: 2.5rem;
+    }
+
+    .item {
+      background-color: #fff0f5;
+      border: 2px dashed #ff69b4;
+      padding: 15px;
+      margin: 15px auto;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255,105,180,0.2);
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    #cart {
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid #ff69b4;
+      display: inline-block;
+    }
+
+    #message {
+      font-size: 1.5rem;
+      color: #d6336c;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Love Shop 💕</h1>
+
+  <div class="item">
+    <h2>Huggies 🤗</h2>
+    <button onclick="addToCart('Hug')">Add to Cart</button>
+  </div>
+
+  <div class="item">
+    <h2>Kisses 😘</h2>
+    <button onclick="addToCart('Kiss')">Add to Cart</button>
+  </div>
+
+  <div class="item">
+    <h2>Cuddle 🧸</h2>
+    <button onclick="addToCart('Cuddle')">Add to Cart</button>
+  </div>
+
+  <div class="item">
+    <h2>Hand Holding 🤝</h2>
+    <button onclick="addToCart('18+')">Add to Cart</button>
+  </div>
+
+  <div id="cart">
+    <h3>Your Cart 🛒</h3>
+    <ul id="cart-items"></ul>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+
+  <div id="message"> Your courier is out for delivery! 💌</div>
+
+  <script>
+    const cartItems = [];
+
+    function addToCart(item) {
+      cartItems.push(item);
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const cartList = document.getElementById("cart-items");
+      cartList.innerHTML = "";
+      cartItems.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${index + 1}. ${item}`;
+        cartList.appendChild(li);
+      });
+    }
+
+    function checkout() {
+      if (cartItems.length === 0) {
+        alert("Your cart is empty, my love!");
+        return;
+      }
+      document.getElementById("message").style.display = "block";
+      document.getElementById("cart-items").innerHTML = "";
+      cartItems.length = 0;
+    }
+  </script>
+</body>
+</html>
