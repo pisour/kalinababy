@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For My Love ❤️</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #ffeef0;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffeef0, #ffccd5);
       font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
       text-align: center;
-      margin-top: 100px;
       cursor: pointer;
+      overflow-y: auto;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #d6336c;
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease forwards;
     }
 
     #message {
-      font-size: 24px;
+      font-size: 1.4rem;
       color: #d6336c;
       display: none;
-      margin-top: 30px;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
     }
 
     .heart {
       width: 100px;
       height: 90px;
       position: relative;
-      margin: 0 auto;
       display: none;
       animation: pulse 1s infinite;
+      margin-top: 20px;
     }
 
     .heart::before,
@@ -36,9 +57,12 @@
       height: 90px;
       background: #ff4d6d;
       border-radius: 50px 50px 0 0;
-      transform: rotate(-45deg);
       top: 0;
       left: 0;
+    }
+
+    .heart::before {
+      transform: rotate(-45deg);
     }
 
     .heart::after {
@@ -48,31 +72,81 @@
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(1);
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    #couplePhoto {
+      display: none;
+      margin-top: 20px;
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
       }
-      50% {
-        transform: scale(1.1);
+      #message {
+        font-size: 1.2rem;
       }
-      100% {
-        transform: scale(1);
+      .heart {
+        width: 80px;
+        height: 70px;
       }
     }
   </style>
 </head>
 <body onclick="showLove()">
 
-  <h1>Click anywhere 💖</h1>
+  <h1>Tap anywhere 💖</h1>
 
   <div class="heart" id="heart"></div>
-  <p id="message">You make my heart beat faster every day 💗</p>
+  <p id="message">You light up my world, baby 💗</p>
+  <img id="couplePhoto" src="us.jpg" alt="Us" />
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
+    let clicked = false;
+
     function showLove() {
-      document.getElementById("heart").style.display = "block";
-      document.getElementById("message").style.display = "block";
+      if (clicked) return;
+      clicked = true;
+
+      const heart = document.getElementById("heart");
+      const message = document.getElementById("message");
+      const photo = document.getElementById("couplePhoto");
+
+      heart.style.display = "block";
+      message.style.display = "block";
+      photo.style.display = "block";
+
+      heart.style.animation = "pulse 1s infinite";
+      message.style.animation = "fadeIn 2s ease forwards";
+      photo.style.animation = "fadeIn 2s ease forwards";
+
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 120,
+          origin: { y: 0.4 }
+        });
+      }, 1000);
     }
   </script>
-
 </body>
 </html>
