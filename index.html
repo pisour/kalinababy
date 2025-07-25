@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      background-color: #ffeef0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      cursor: pointer;
+    }
+
+    #message {
+      font-size: 24px;
+      color: #d6336c;
+      display: none;
+      margin-top: 30px;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      margin: 0 auto;
+      display: none;
+      animation: pulse 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: #ff4d6d;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      top: 0;
+      left: 0;
+    }
+
+    .heart::after {
+      transform: rotate(45deg);
+      left: auto;
+      right: 0;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body onclick="showLove()">
+
+  <h1>Click anywhere 💖</h1>
+
+  <div class="heart" id="heart"></div>
+  <p id="message">You make my heart beat faster every day 💗</p>
+
+  <script>
+    function showLove() {
+      document.getElementById("heart").style.display = "block";
+      document.getElementById("message").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
