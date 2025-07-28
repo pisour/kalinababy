@@ -86,66 +86,66 @@
 
   <div id="message"> Your courier is out for delivery! 💌</div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
-  <script>
-    // Your Firebase config (update this if you create a new project!)
-    const firebaseConfig = {
-      apiKey: "AIzaSyAARivGHE52grbs5cJyzOGIzcIYqR1inq0",
-      authDomain: "love-shop-aed8a.firebaseapp.com",
-      databaseURL: "https://love-shop-aed8a-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "love-shop-aed8a",
-      storageBucket: "love-shop-aed8a.firebasestorage.app",
-      messagingSenderId: "378986635593",
-      appId: "1:378986635593:web:674b39361ec64b2a687a98",
-      measurementId: "G-QGJW8JQLEP"
-    };
+ <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+<script>
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAARivGHE52grbs5cJyzOGIzcIYqR1inq0",
+    authDomain: "love-shop-aed8a.firebaseapp.com",
+    databaseURL: "https://love-shop-aed8a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "love-shop-aed8a",
+    storageBucket: "love-shop-aed8a.firebasestorage.app",
+    messagingSenderId: "378986635593",
+    appId: "1:378986635593:web:674b39361ec64b2a687a98",
+    measurementId: "G-QGJW8JQLEP"
+  };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
-    // Cart logic
-    const cartItems = [];
+  // Cart logic
+  const cartItems = [];
 
-    function addToCart(item) {
-      cartItems.push(item);
-      updateCartDisplay();
+  window.addToCart = function(item) {
+    cartItems.push(item);
+    updateCartDisplay();
+  }
+
+  function updateCartDisplay() {
+    const cartList = document.getElementById("cart-items");
+    cartList.innerHTML = "";
+    cartItems.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.textContent = `${index + 1}. ${item}`;
+      cartList.appendChild(li);
+    });
+  }
+
+  window.checkout = function() {
+    if (cartItems.length === 0) {
+      alert("Your cart is empty, my love!");
+      return;
     }
 
-    function updateCartDisplay() {
-      const cartList = document.getElementById("cart-items");
-      cartList.innerHTML = "";
-      cartItems.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.textContent = `${index + 1}. ${item}`;
-        cartList.appendChild(li);
-      });
-    }
-
-    function checkout() {
-      if (cartItems.length === 0) {
-        alert("Your cart is empty, my love!");
-        return;
-      }
-
-      // Save the cart to Firebase
-      const orderRef = db.ref('orders').push();
-      orderRef.set({
-        items: cartItems,
-        timestamp: new Date().toISOString()
-      })
-      .then(() => {
-        document.getElementById("message").style.display = "block";
-        document.getElementById("cart-items").innerHTML = "";
-        cartItems.length = 0;
-        alert("Order sent! 💌");
-      })
-      .catch((error) => {
-        alert("Error sending order: " + error.message);
-      });
-    }
-  </script>
+    // Save the cart to Firebase
+    const orderRef = db.ref('orders').push();
+    orderRef.set({
+      items: cartItems,
+      timestamp: new Date().toISOString()
+    })
+    .then(() => {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("cart-items").innerHTML = "";
+      cartItems.length = 0;
+      alert("Order sent! 💌");
+    })
+    .catch((error) => {
+      alert("Error sending order: " + error.message);
+    });
+  }
+</script>
 </body>
 </html>
