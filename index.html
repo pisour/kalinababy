@@ -104,15 +104,24 @@
       });
     }
 
-    function checkout() {
-      if (cartItems.length === 0) {
-        alert("Your cart is empty, my love!");
-        return;
-      }
-      document.getElementById("message").style.display = "block";
-      document.getElementById("cart-items").innerHTML = "";
-      cartItems.length = 0;
-    }
+function checkout() {
+  if (cartItems.length === 0) {
+    alert("Your cart is empty, my love!");
+    return;
+  }
+  // Prepare order details
+  const order = cartItems.map((item, i) => `${i + 1}. ${item}`).join('%0A');
+  // Replace with your own email address!
+  const recipient = "srpisour@gmail.com";
+  const subject = "Love Shop Order";
+  const body = `Here is my order:%0A${order}`;
+  // Open the email client
+  window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+  
+  document.getElementById("message").style.display = "block";
+  document.getElementById("cart-items").innerHTML = "";
+  cartItems.length = 0;
+}
   </script>
 </body>
 </html>
