@@ -86,42 +86,54 @@
 
   <div id="message"> Your courier is out for delivery! 💌</div>
 
-  <script>
-    const cartItems = [];
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-    function addToCart(item) {
-      cartItems.push(item);
-      updateCartDisplay();
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAARivGHE52grbs5cJyzOGIzcIYqR1inq0",
+  authDomain: "love-shop-aed8a.firebaseapp.com",
+  projectId: "love-shop-aed8a",
+  storageBucket: "love-shop-aed8a.firebasestorage.app",
+  messagingSenderId: "378986635593",
+  appId: "1:378986635593:web:674b39361ec64b2a687a98",
+  measurementId: "G-QGJW8JQLEP"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+<script>
+  // ...existing cartItems, addToCart, updateCartDisplay...
+
+  function checkout() {
+    if (cartItems.length === 0) {
+      alert("Your cart is empty, my love!");
+      return;
     }
 
-    function updateCartDisplay() {
-      const cartList = document.getElementById("cart-items");
-      cartList.innerHTML = "";
-      cartItems.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.textContent = `${index + 1}. ${item}`;
-        cartList.appendChild(li);
-      });
-    }
-
-function checkout() {
-  if (cartItems.length === 0) {
-    alert("Your cart is empty, my love!");
-    return;
+    // Save the cart to Firebase
+    const orderRef = db.ref('orders').push(); // Generates unique order id
+    orderRef.set({
+      items: cartItems,
+      timestamp: new Date().toISOString()
+      // Optionally add: name, message, or who sent it
+    })
+    .then(() => {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("cart-items").innerHTML = "";
+      cartItems.length = 0;
+      alert("Order sent! 💌");
+    })
+    .catch((error) => {
+      alert("Error sending order: " + error.message);
+    });
   }
-  // Prepare order details
-  const order = cartItems.map((item, i) => `${i + 1}. ${item}`).join('%0A');
-  // Replace with your own email address!
-  const recipient = "srpisour@gmail.com";
-  const subject = "Love Shop Order";
-  const body = `Here is my order:%0A${order}`;
-  // Open the email client
-  window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-  
-  document.getElementById("message").style.display = "block";
-  document.getElementById("cart-items").innerHTML = "";
-  cartItems.length = 0;
-}
-  </script>
+</script>
 </body>
 </html>
