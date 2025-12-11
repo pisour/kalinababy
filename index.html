@@ -20,12 +20,26 @@
         }
 
         body {
-            font-family: 'Fleur De Leah', cursive;
-            background: url('background.jpg') center/cover fixed;
-            color: #fff;
-            overflow-x: hidden;
-            position: relative;
-        }
+    	font-family: 'Fleur De Leah', cursive;
+    	background-image: url('background.jpg'); /* your current one */
+    	background-position: center;
+    	background-size: cover;
+    	background-repeat: no-repeat;
+    	background-attachment: fixed;  /* keep parallax on desktop */
+    	color: #fff;
+    	overflow-x: hidden;
+    	position: relative;
+	}
+
+	/* Mobile tweaks */
+	@media (max-width: 768px) {
+    	body {
+        background-image: url('background-mobile.jpg'); /* taller version */
+        background-attachment: scroll;   /* turn OFF fixed on iPhone */
+        background-position: center top; /* keep her face in frame */
+        background-size: cover;
+    }
+}
 
         body::before {
             content: '';
@@ -713,7 +727,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="1.jpg" alt="Our Beginning">
+                            <img src="1.png" alt="Our Beginning">
                         </div>
                         <div class="timeline-content">
                             <p class="timeline-date">Chapter One</p>
