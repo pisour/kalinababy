@@ -540,6 +540,128 @@
             }
         }
 
+        /* Music Controls */
+        .music-toggle {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--rose-gold));
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5),
+                        0 0 40px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.7),
+                        0 0 60px rgba(212, 175, 55, 0.5);
+        }
+
+        .music-toggle.playing .music-icon {
+            animation: musicPulse 1s infinite;
+        }
+
+        .music-icon {
+            font-size: 1.8rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Start Overlay */
+        .start-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(0, 0, 0, 0.95),
+                rgba(30, 20, 40, 0.95));
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .start-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .start-content {
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .start-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.9),
+                         0 0 90px rgba(212, 175, 55, 0.5);
+        }
+
+        .start-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--light-gold);
+            font-weight: 300;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+        }
+
+        .start-pulse {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: 50px auto 0;
+            animation: pulseRing 2s infinite;
+            box-shadow: 0 0 30px var(--gold);
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .music-toggle {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .music-icon {
+                font-size: 1.5rem;
+            }
+        }
+
         @media (max-width: 968px) {
             .timeline::before {
                 left: 30px;
@@ -571,6 +693,26 @@
 </head>
 <body>
     <div class="grain"></div>
+    
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="music.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Music Control Button -->
+    <button id="musicToggle" class="music-toggle">
+        <span class="music-icon">♪</span>
+    </button>
+
+    <!-- Click to Start Overlay -->
+    <div id="startOverlay" class="start-overlay">
+        <div class="start-content">
+            <h2 class="start-title">For Kalina</h2>
+            <p class="start-subtitle">Click anywhere to begin</p>
+            <div class="start-pulse"></div>
+        </div>
+    </div>
     
     <div class="container">
         <!-- Hero Section -->
@@ -692,6 +834,41 @@
     </div>
 
     <script>
+        // Background Music Control
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const startOverlay = document.getElementById('startOverlay');
+        let musicPlaying = false;
+
+        // Start overlay - click to begin
+        startOverlay.addEventListener('click', () => {
+            startOverlay.classList.add('hidden');
+            bgMusic.play().then(() => {
+                musicPlaying = true;
+                musicToggle.classList.add('playing');
+            }).catch(err => {
+                console.log('Autoplay prevented:', err);
+            });
+        });
+
+        // Music toggle button
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicToggle.classList.remove('playing');
+                musicToggle.innerHTML = '<span class="music-icon">♪</span>';
+            } else {
+                bgMusic.play();
+                musicToggle.classList.add('playing');
+                musicToggle.innerHTML = '<span class="music-icon">♪</span>';
+            }
+            musicPlaying = !musicPlaying;
+        });
+
+        // Set initial volume
+        bgMusic.volume = 0.5;
+
         // Floating particles
         function createParticle() {
             const particle = document.createElement('div');
