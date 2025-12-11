@@ -20,26 +20,23 @@
         }
 
         body {
-    	font-family: 'Fleur De Leah', cursive;
-    	background-image: url('background.jpg'); /* your current one */
-    	background-position: center;
-    	background-size: cover;
-    	background-repeat: no-repeat;
-    	background-attachment: fixed;  /* keep parallax on desktop */
-    	color: #fff;
-    	overflow-x: hidden;
-    	position: relative;
-	}
+            font-family: 'Fleur De Leah', cursive;
+            background: url('background.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
 
-	/* Mobile tweaks */
-	@media (max-width: 768px) {
-    	body {
-        background-image: url('background-mobile.jpg'); /* taller version */
-        background-attachment: scroll;   /* turn OFF fixed on iPhone */
-        background-position: center top; /* keep her face in frame */
-        background-size: cover;
-    }
-}
+        /* Mobile fix for background */
+        @media (max-width: 968px) {
+            body {
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center center;
+            }
+        }
 
         body::before {
             content: '';
@@ -175,7 +172,7 @@
 
         .divider-ornament::before,
         .divider-ornament::after {
-            content: '❖';
+            content: '◆';
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -708,7 +705,7 @@
             <p class="hero-subtitle">A Love Letter For</p>
             <h1 class="hero-title">Kalina</h1>
             <p class="hero-message">
-                This is our story, beautifully woven through time — every moment, every memory, every heartbeat that brought us here.
+                As the saying goes: If our love was to be stored in the ocean, the world would overflow.
             </p>
             <div class="scroll-indicator"></div>
         </section>
@@ -730,10 +727,10 @@
                             <img src="1.png" alt="Our Beginning">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter One</p>
-                            <h3 class="timeline-title">When Our Eyes First Met</h3>
+                            <p class="timeline-date">Month 1</p>
+                            <h3 class="timeline-title">Where it all started - two worlds would collide</h3>
                             <p class="timeline-description">
-                                In that single moment, the world around us faded into a beautiful blur. Your smile lit up something inside me that I didn't know existed. It was the beginning of everything — the start of us, the birth of a love story that would change my life forever.
+                                All of a sudden, it felt like all my prayers were being answered. The world stopped, and it felt like I've been chosen. She picked me!!!
                             </p>
                         </div>
                     </div>
@@ -744,115 +741,166 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="2.jpg" alt="The First Spark">
+                            <img src="2.png" alt="The First Spark">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Two</p>
-                            <h3 class="timeline-title">The First Spark</h3>
+                            <p class="timeline-date">Month 2</p>
+                            <h3 class="timeline-title">Our first meet</h3>
                             <p class="timeline-description">
-                                Our first conversation felt like coming home. The way you laughed, the way you saw the world — everything about you captivated me. Hours felt like minutes, and I knew with absolute certainty that I wanted to know every part of you, every story, every dream.
+                                Not even the biggest force could have stopped the love from overflowing, ever since they started talking. Inevitably, the two would meet. Rumour has it, the lady caved in first :)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item GOR -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="gor 1.png" alt="Adventures Together">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Great Ocean Road</p>
+                            <h3 class="timeline-title">The most anticipated</h3>
+                            <p class="timeline-description">
+                                Time suddenly froze. It felt like ages until we'd meet again. She was worried that I wouldn't fly to see her, I was worried the time wouldn't come soon enough. Eventually, we made it and it was the most magical moment ever!
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 3 -->
-                <div class="timeline-item left">
+                <div class="timeline-item right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="3.jpg" alt="Adventures Together">
+                            <img src="3.png" alt="Adventures Together">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Three</p>
-                            <h3 class="timeline-title">Adventures Together</h3>
+                            <p class="timeline-date">Month 3</p>
+                            <h3 class="timeline-title">Back to Reality</h3>
                             <p class="timeline-description">
-                                Every adventure with you became a treasure. From spontaneous road trips to quiet evenings watching the sunset, you turned ordinary moments into extraordinary memories. With you, even the simplest things feel magical, because it's not about where we are — it's about being together.
+                                As much as we did not want to, we'd sadly part ways to our own responsibilities. Wierdly, our hearts mended as one...so that kinda helped?? Anyways, here is my princess in all her glory. 
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 4 -->
-                <div class="timeline-item right">
+                <div class="timeline-item left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="4.jpg" alt="Growing Together">
+                            <img src="4.png" alt="Growing Together">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Four</p>
-                            <h3 class="timeline-title">Growing Together</h3>
+                            <p class="timeline-date">Month 4</p>
+                            <h3 class="timeline-title">Big News</h3>
                             <p class="timeline-description">
-                                Through every challenge and triumph, we've become stronger. You've been my rock, my inspiration, my safe haven. Together, we've laughed until our stomachs hurt, cried on each other's shoulders, and built a love that's resilient, deep, and true. You've made me a better person.
+                                Oh where do I even start with this month. Big step for us, but especially for me. It was the first time in my life, a girl has swept me off my feet. I had no where to stand but with and beside her as we navigated our future. Things got serious, excitingly. Our families would meet that month, lovely people exchanged their greetings and this would begin our intimate futures.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 5 -->
-                <div class="timeline-item left">
+                <div class="timeline-item right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="5.jpg" alt="Our Forever">
+                            <img src="5.png" alt="Our Forever">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Five</p>
-                            <h3 class="timeline-title">Deepening Love</h3>
+                            <p class="timeline-date">Month 5</p>
+                            <h3 class="timeline-title">Cambodia</h3>
                             <p class="timeline-description">
-                                With each passing day, my love for you grows deeper and more profound. You've shown me what it means to truly connect with another soul. Every conversation, every shared silence, every knowing glance — they all weave together into something extraordinary and irreplaceable.
+                                Our homelands, and where we'd promised to raise our children. Back for the first time together, and it was everything more than magical. Bong Vid and Sinsyana's wedding was incredible, our families were lovely, and spending Cambodia with you was all I had hoped for. They are so not ready for our return!!!
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 6 -->
-                <div class="timeline-item right">
+                <div class="timeline-item left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="6.jpg" alt="Special Moments">
+                            <img src="6.png" alt="Special Moments">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Six</p>
-                            <h3 class="timeline-title">Treasured Moments</h3>
+                            <p class="timeline-date">Month 6</p>
+                            <h3 class="timeline-title">Melbourne, we are back</h3>
                             <p class="timeline-description">
-                                These are the moments I hold closest to my heart — the times when it's just us against the world. Your presence turns the mundane into magic, and every memory we create together becomes a precious treasure that I'll cherish forever.
+                                Beauty really lies in the mundane. We found our rhythm back in Melbourne as we embarked on our last stage before the big day (hint: starts with a M). Got to cook my soon-to-be wife a 2 course meal, quite impressed with myself till this day if I'm honest.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 7 -->
-                <div class="timeline-item left">
+                <div class="timeline-item right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="7.jpg" alt="Dreams Together">
+                            <img src="7.png" alt="Dreams Together">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Seven</p>
-                            <h3 class="timeline-title">Building Dreams</h3>
+                            <p class="timeline-date">Month 7</p>
+                            <h3 class="timeline-title">Suprises</h3>
                             <p class="timeline-description">
-                                Together, we're building something beautiful — a future filled with dreams we've woven together. Every plan we make, every hope we share, brings us closer to the life we've always imagined. With you, I know that anything is possible.
+                                A day I would never forget. You surprised me for my birthday, showing me that I'm a boy worthy of your affection. It's the nicest surprise you could've done for me alongside the nicest gift that I have ever received.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 8 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="8.png" alt="Forever Journey">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Month 8</p>
+                            <h3 class="timeline-title">A few balinese</h3>
+                            <p class="timeline-description">
+                                First foreign trip with her. Bali was a great mid-term break, definitely needed after a stressful half semester. Could not have asked for a better partner to spend life wife; oh and of course the holiday with too. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 9 -->
                 <div class="timeline-item right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-image">
-                            <img src="8.jpg" alt="Forever Journey">
+                            <img src="9.png" alt="Forever Journey">
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-date">Chapter Eight</p>
-                            <h3 class="timeline-title">Our Forever Journey</h3>
+                            <p class="timeline-date">Month 9</p>
+                            <h3 class="timeline-title">Final push</h3>
                             <p class="timeline-description">
-                                This is not the end, my love — it's just the beginning of our forever. Every day with you is a new chapter waiting to be written, a new adventure waiting to unfold. I promise to love you through every season, every challenge, and every beautiful moment that life brings our way.
+                                My love flew in after her school finished. We went through my whole exam phase together, and I am so grateful for every moment of it. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 10 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="10.png" alt="Forever Journey">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Month 10</p>
+                            <h3 class="timeline-title">My girl is a bachelor</h3>
+                            <p class="timeline-description">
+                                After a stressful term, we got to celebrate the best girl tonight. This month's anniversary is not just another month we've been dating, but another milestone we've smashed together. One degree hotter and all the more beautiful she becomes in my eyes.
                             </p>
                         </div>
                     </div>
@@ -865,7 +913,9 @@
             <div class="finale-ornament"></div>
             <h2 class="finale-title">To My Kalina</h2>
             <p class="finale-message">
-                You are my greatest adventure, my sweetest dream, and my most beautiful reality. Thank you for choosing me, for loving me, and for being the most incredible person I know. Here's to us — to our past, our present, and the infinite future ahead.
+                You came into my life and changed everything. You made me see the world differently, you made me feel differently, and you made me want to become the best version of myself. You've made me a better man in ways I never expected. Through your kindness, your patience, and the way you love so effortlessly, you've shown me that you're more than capable to be the mother of my children and the person I want by my side through the toughest of times.
+
+You are my greatest adventure, my sweetest dream, and my most beautiful reality. Thank you for choosing me, for loving me, and for being the most incredible person I know. Here's to us...to our past, our present, and the infinite future ahead. I can't wait to grow, to learn, and to build a life with you, my love. I love you, eternally.
             </p>
             <p class="signature">Forever Yours ♡</p>
         </section>
@@ -947,11 +997,13 @@
             });
         });
 
-        // Parallax effect for background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            document.body.style.backgroundPositionY = scrolled * 0.5 + 'px';
-        });
+        // Parallax effect for background (desktop only)
+        if (window.innerWidth > 968) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                document.body.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            });
+        }
     </script>
 </body>
 </html>
