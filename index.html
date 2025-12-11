@@ -2,150 +2,329 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Love Shop 💝</title>
+  <title>Happy Anniversary ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(to bottom right, #ffe4e1, #ffb6c1);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #ffdde1 0%, #ee9ca7 35%, #4b134f 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .container {
       text-align: center;
-      padding: 30px;
+      padding: 2rem;
+      max-width: 800px;
     }
 
     h1 {
-      color: #d6336c;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
     }
 
-    .item {
-      background-color: #fff0f5;
-      border: 2px dashed #ff69b4;
-      padding: 15px;
-      margin: 15px auto;
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255,105,180,0.2);
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
     }
 
-    button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
-      border-radius: 10px;
-      cursor: pointer;
+    p {
       font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
-    #cart {
-      margin-top: 20px;
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      border: 2px solid #ff69b4;
+    .highlight {
+      font-weight: 600;
+    }
+
+    /* Countdown styles */
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 0.75rem 1.2rem;
+      border-radius: 1rem;
+      min-width: 80px;
+      backdrop-filter: blur(6px);
+    }
+
+    .time-box span.value {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .time-box span.label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+
+    /* Button style */
+    .btn {
       display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255, 255, 255, 0.95);
+      color: #d63384;
+      font-weight: 600;
+      cursor: default;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      font-size: 0.95rem;
     }
 
-    #message {
-      font-size: 1.5rem;
-      color: #d6336c;
-      margin-top: 20px;
-      display: none;
+    /* Anniversary screen styling */
+    #anniversary-screen h1 {
+      font-size: 3rem;
+    }
+
+    .script {
+      font-family: "Brush Script MT", "Lucida Handwriting", cursive;
+      font-size: 2.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 1.5rem;
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      text-align: left;
+    }
+
+    .card p {
+      margin-bottom: 0.75rem;
+      font-size: 0.98rem;
+    }
+
+    .signature {
+      margin-top: 1.25rem;
+      font-style: italic;
+      text-align: right;
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      background: #ffbfd2;
+      transform: rotate(45deg);
+      animation: floatUp 8s linear infinite;
+      opacity: 0.85;
+      z-index: -1;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ffbfd2;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -9px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -9px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(45deg) scale(0.7);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      #anniversary-screen h1 {
+        font-size: 2.4rem;
+      }
+      .card {
+        text-align: left;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Love Shop 💕</h1>
+  <!-- BEFORE MIDNIGHT: Countdown / teaser screen -->
+  <div id="countdown-screen" class="container">
+    <h2>Something special is coming… 💌</h2>
+    <p>
+      This page is counting down to a surprise that unlocks at
+      <span class="highlight">midnight tonight</span>.
+    </p>
+    <p>Come back right at 12:00 AM… it’s just for you. 💖</p>
 
-  <div class="item">
-    <h2>Huggies 🤗</h2>
-    <button onclick="addToCart('Huggies 🤗')">Add to Cart</button>
+    <div id="countdown">
+      <div class="time-box">
+        <span class="value" id="days">0</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="time-box">
+        <span class="value" id="hours">0</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="time-box">
+        <span class="value" id="minutes">0</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="time-box">
+        <span class="value" id="seconds">0</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+
+    <button class="btn" disabled>
+      Waiting for 12:00 AM…
+    </button>
   </div>
 
-  <div class="item">
-    <h2>Kissies 😘</h2>
-    <button onclick="addToCart('Kissies 😘')">Add to Cart</button>
+  <!-- AFTER MIDNIGHT: Full anniversary page -->
+  <div id="anniversary-screen" class="container hidden">
+    <div class="script">To my love,</div>
+    <h1>Happy Anniversary ❤️</h1>
+    <p>
+      Today is our day. I’m so grateful that somehow, out of everyone in this world,
+      I get to call <span class="highlight">you</span> mine.
+    </p>
+
+    <div class="card">
+      <h2>What you mean to me</h2>
+      <p>
+        You are my safe place, my favourite notification, my calm and my chaos,
+        all wrapped into one person. With you, the ordinary moments feel special,
+        and the hard days feel lighter.
+      </p>
+      <p>
+        Thank you for your patience, your kindness, your laughs, your late-night
+        talks, and the way you understand me even when I don’t say anything at all.
+      </p>
+      <p>
+        I don’t know what the future holds in detail, but I know the one thing I’m
+        sure of: I want you in it, always.
+      </p>
+
+      <h2>My little promise to you</h2>
+      <p>
+        I promise to keep choosing you every single day. To support your dreams,
+        to listen when you speak, to make you feel loved, seen, and cherished—
+        not just on our anniversary, but on all the quiet days in between.
+      </p>
+      <p>
+        I’ll keep working on myself, not just for me, but for us. So that the
+        person standing next to you is someone you can always be proud of.
+      </p>
+
+      <p class="signature">
+        With all my love,<br />
+        <span class="highlight">[Your Name]</span> 💞
+      </p>
+    </div>
   </div>
 
-  <div class="item">
-    <h2>Canoodles 🧸</h2>
-    <button onclick="addToCart('Canoodles 🧸')">Add to Cart</button>
-  </div>
+  <script>
+    // === 1. Set target: midnight tonight (local time) ===
+    const now = new Date();
+    // Midnight TONIGHT (00:00 of the next calendar day)
+    const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
 
-  <div class="item">
-    <h2>18+</h2>
-    <button onclick="addToCart('18+')">Add to Cart</button>
-  </div>
+    const countdownScreen = document.getElementById("countdown-screen");
+    const anniversaryScreen = document.getElementById("anniversary-screen");
 
-  <div id="cart">
-    <h3>Your Cart 🛒</h3>
-    <ul id="cart-items"></ul>
-    <button onclick="checkout()">Checkout</button>
-  </div>
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
 
-  <div id="message"> Your courier is out for delivery! 💌</div>
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
 
- <!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
-<script>
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAARivGHE52grbs5cJyzOGIzcIYqR1inq0",
-    authDomain: "love-shop-aed8a.firebaseapp.com",
-    databaseURL: "https://love-shop-aed8a-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "love-shop-aed8a",
-    storageBucket: "love-shop-aed8a.firebasestorage.app",
-    messagingSenderId: "378986635593",
-    appId: "1:378986635593:web:674b39361ec64b2a687a98",
-    measurementId: "G-QGJW8JQLEP"
-  };
+      if (diff <= 0) {
+        // Time reached: show anniversary screen
+        countdownScreen.classList.add("hidden");
+        anniversaryScreen.classList.remove("hidden");
+        return;
+      }
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
 
-  // Cart logic
-  const cartItems = [];
-
-  window.addToCart = function(item) {
-    cartItems.push(item);
-    updateCartDisplay();
-  }
-
-  function updateCartDisplay() {
-    const cartList = document.getElementById("cart-items");
-    cartList.innerHTML = "";
-    cartItems.forEach((item, index) => {
-      const li = document.createElement("li");
-      li.textContent = `${index + 1}. ${item}`;
-      cartList.appendChild(li);
-    });
-  }
-
-  window.checkout = function() {
-    if (cartItems.length === 0) {
-      alert("Your cart is empty, my love!");
-      return;
+      daysEl.textContent = days;
+      hoursEl.textContent = String(hours).padStart(2, "0");
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
     }
 
-    // Save the cart to Firebase
-    const orderRef = db.ref('orders').push();
-    orderRef.set({
-      items: cartItems,
-      timestamp: new Date().toISOString()
-    })
-    .then(() => {
-      document.getElementById("message").style.display = "block";
-      document.getElementById("cart-items").innerHTML = "";
-      cartItems.length = 0;
-      alert("Order sent! 💌");
-    })
-    .catch((error) => {
-      alert("Error sending order: " + error.message);
-    });
-  }
-</script>
+    // Initial check (if she opens after midnight, it will go straight to anniversary)
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+
+    // === 2. Create floating hearts in the background ===
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      const size = Math.random() * 12 + 10; // 10–22 px
+      heart.style.width = size + "px";
+      heart.style.height = size + "px";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 4 + 6 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 12000);
+    }
+
+    setInterval(createHeart, 700);
+  </script>
 </body>
 </html>
