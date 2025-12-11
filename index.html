@@ -1,330 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Happy Anniversary ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Kalina ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:wght@400,600,700,900&family=Montserrat:wght@300,400,500,600&family=Italiana&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #ffdde1 0%, #ee9ca7 35%, #4b134f 100%);
-      color: #fff;
-      overflow: hidden;
-    }
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F4E4C1;
+            --rose-gold: #B76E79;
+            --champagne: #F7E7CE;
+        }
 
-    .hidden {
-      display: none !important;
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url('background.jpg') center/cover fixed;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 800px;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.15), transparent 60%),
+                        radial-gradient(ellipse at bottom, rgba(183, 110, 121, 0.2), transparent 60%),
+                        linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+            pointer-events: none;
+            z-index: 1;
+        }
 
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-    }
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.5;
+        }
 
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
-    }
+        .container {
+            position: relative;
+            z-index: 3;
+        }
 
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
 
-    .highlight {
-      font-weight: 600;
-    }
+        .ornament-top {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            position: relative;
+            animation: rotateGlow 20s linear infinite;
+        }
 
-    /* Countdown styles */
-    #countdown {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
+        .ornament-top::before,
+        .ornament-top::after {
+            content: '';
+            position: absolute;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+        }
 
-    .time-box {
-      background: rgba(255, 255, 255, 0.12);
-      padding: 0.75rem 1.2rem;
-      border-radius: 1rem;
-      min-width: 80px;
-      backdrop-filter: blur(6px);
-    }
+        .ornament-top::before {
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 40px var(--gold), inset 0 0 40px rgba(212, 175, 55, 0.3);
+        }
 
-    .time-box span.value {
-      display: block;
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
+        .ornament-top::after {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            box-shadow: 0 0 30px var(--gold);
+        }
 
-    .time-box span.label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.8;
-    }
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--light-gold);
+            margin-bottom: 20px;
+            font-weight: 300;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+        }
 
-    /* Button style */
-    .btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 1.8rem;
-      border-radius: 999px;
-      border: none;
-      background: rgba(255, 255, 255, 0.95);
-      color: #d63384;
-      font-weight: 600;
-      cursor: default;
-      text-decoration: none;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      font-size: 0.95rem;
-    }
+        .hero-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(4rem, 12vw, 10rem);
+            color: var(--gold);
+            margin-bottom: 30px;
+            line-height: 1;
+            animation: fadeInUp 1.5s ease-out 0.8s both;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.9),
+                         0 0 90px rgba(212, 175, 55, 0.5),
+                         0 10px 30px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+            position: relative;
+        }
 
-    /* Anniversary screen styling */
-    #anniversary-screen h1 {
-      font-size: 3rem;
-    }
+        .hero-message {
+            font-family: 'Italiana', serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #fff;
+            max-width: 700px;
+            line-height: 1.8;
+            margin: 0 auto 60px;
+            animation: fadeInUp 1.5s ease-out 1.1s both;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+            font-weight: 400;
+        }
 
-    .script {
-      font-family: "Brush Script MT", "Lucida Handwriting", cursive;
-      font-size: 2.3rem;
-      margin-bottom: 0.5rem;
-    }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
 
-    .card {
-      background: rgba(255, 255, 255, 0.14);
-      border-radius: 1.5rem;
-      padding: 1.75rem;
-      margin-top: 1.5rem;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
-      text-align: left;
-    }
+        .scroll-indicator::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            position: relative;
+            box-shadow: 0 0 20px var(--gold);
+        }
 
-    .card p {
-      margin-bottom: 0.75rem;
-      font-size: 0.98rem;
-    }
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 3px;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollDot 1.5s infinite;
+            box-shadow: 0 0 10px var(--gold);
+        }
 
-    .signature {
-      margin-top: 1.25rem;
-      font-style: italic;
-      text-align: right;
-    }
+        /* Divider Section */
+        .divider-section {
+            padding: 150px 20px;
+            text-align: center;
+            position: relative;
+        }
 
-    /* Floating hearts animation */
-    .heart {
-      position: fixed;
-      width: 18px;
-      height: 18px;
-      background: #ffbfd2;
-      transform: rotate(45deg);
-      animation: floatUp 8s linear infinite;
-      opacity: 0.85;
-      z-index: -1;
-    }
+        .divider-ornament {
+            width: 80%;
+            max-width: 600px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+            margin: 0 auto 40px;
+            position: relative;
+            box-shadow: 0 0 30px var(--gold);
+        }
 
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: #ffbfd2;
-      border-radius: 50%;
-    }
+        .divider-ornament::before,
+        .divider-ornament::after {
+            content: '❖';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 1.5rem;
+            text-shadow: 0 0 20px var(--gold);
+        }
 
-    .heart::before {
-      top: -9px;
-      left: 0;
-    }
+        .divider-ornament::before {
+            left: -30px;
+        }
 
-    .heart::after {
-      left: -9px;
-      top: 0;
-    }
+        .divider-ornament::after {
+            right: -30px;
+        }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(100vh) rotate(45deg) scale(0.7);
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(45deg) scale(1.1);
-        opacity: 0;
-      }
-    }
+        .divider-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+            line-height: 1.4;
+        }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      #anniversary-screen h1 {
-        font-size: 2.4rem;
-      }
-      .card {
-        text-align: left;
-      }
-    }
-  </style>
+        /* Timeline */
+        .timeline-section {
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                transparent,
+                var(--gold) 5%,
+                var(--gold) 95%,
+                transparent);
+            box-shadow: 0 0 30px var(--gold), 0 0 60px var(--gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 120px 0;
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item.left {
+            padding-right: 52%;
+        }
+
+        .timeline-item.right {
+            padding-left: 52%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, var(--gold), var(--rose-gold));
+            border: 4px solid rgba(255, 255, 255, 1);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.3),
+                        0 0 40px var(--gold),
+                        inset 0 0 15px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        .timeline-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(212, 175, 55, 0.15) 50%,
+                rgba(183, 110, 121, 0.1) 100%);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.1),
+                transparent 50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 100px rgba(212, 175, 55, 0.4),
+                        0 0 80px rgba(212, 175, 55, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: var(--gold);
+        }
+
+        .timeline-card:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.3),
+                rgba(183, 110, 121, 0.3));
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .timeline-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.2),
+                rgba(183, 110, 121, 0.2));
+            z-index: 1;
+        }
+
+        .timeline-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            z-index: 2;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .timeline-content {
+            padding: 50px 40px;
+        }
+
+        .timeline-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 0 0 20px var(--gold);
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+        }
+
+        .timeline-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.9;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Final Message */
+        .finale {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .finale-ornament {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .finale-ornament::before {
+            content: '♥';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            color: var(--rose-gold);
+            text-shadow: 0 0 60px var(--rose-gold),
+                         0 0 100px var(--gold);
+            animation: heartbeat 2s infinite;
+        }
+
+        .finale-title {
+            font-family: 'Pinyon Script', cursive;
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--gold);
+            margin-bottom: 40px;
+            line-height: 1.2;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.9),
+                         0 0 90px rgba(212, 175, 55, 0.5),
+                         0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .finale-message {
+            font-family: 'Italiana', serif;
+            font-size: clamp(1.3rem, 3vw, 2.2rem);
+            color: #fff;
+            max-width: 900px;
+            line-height: 1.9;
+            margin: 0 auto;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+            font-weight: 400;
+        }
+
+        .signature {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-top: 60px;
+            text-shadow: 0 0 30px var(--gold);
+        }
+
+        /* Particles */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            box-shadow: 0 0 10px var(--gold);
+            animation: float 8s infinite;
+        }
+
+        @keyframes rotateGlow {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-15px); }
+        }
+
+        @keyframes scrollDot {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(25px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7),
+                            0 0 40px var(--gold),
+                            inset 0 0 15px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(212, 175, 55, 0),
+                            0 0 60px var(--gold),
+                            inset 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            10% { transform: translate(-50%, -50%) scale(1.2); }
+            20% { transform: translate(-50%, -50%) scale(1); }
+            30% { transform: translate(-50%, -50%) scale(1.2); }
+            40% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0) scale(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) translateX(100px) scale(1);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item.left,
+            .timeline-item.right {
+                padding-left: 80px;
+                padding-right: 20px;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-image {
+                height: 300px;
+            }
+
+            .timeline-content {
+                padding: 35px 25px;
+            }
+
+            .timeline-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- BEFORE MIDNIGHT: Countdown / teaser screen -->
-  <div id="countdown-screen" class="container">
-    <h2>Something special is coming… 💌</h2>
-    <p>
-      This page is counting down to a surprise that unlocks at
-      <span class="highlight">midnight tonight</span>.
-    </p>
-    <p>Come back right at 12:00 AM… it’s just for you. 💖</p>
+    <div class="grain"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="ornament-top"></div>
+            <p class="hero-subtitle">A Love Letter For</p>
+            <h1 class="hero-title">Kalina</h1>
+            <p class="hero-message">
+                This is our story, beautifully woven through time — every moment, every memory, every heartbeat that brought us here.
+            </p>
+            <div class="scroll-indicator"></div>
+        </section>
 
-    <div id="countdown">
-      <div class="time-box">
-        <span class="value" id="days">0</span>
-        <span class="label">Days</span>
-      </div>
-      <div class="time-box">
-        <span class="value" id="hours">0</span>
-        <span class="label">Hours</span>
-      </div>
-      <div class="time-box">
-        <span class="value" id="minutes">0</span>
-        <span class="label">Minutes</span>
-      </div>
-      <div class="time-box">
-        <span class="value" id="seconds">0</span>
-        <span class="label">Seconds</span>
-      </div>
+        <!-- Divider -->
+        <section class="divider-section">
+            <div class="divider-ornament"></div>
+            <p class="divider-text">Where our journey began and<br>where forever starts</p>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="1.jpg" alt="Our Beginning">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Chapter One</p>
+                            <h3 class="timeline-title">When Our Eyes First Met</h3>
+                            <p class="timeline-description">
+                                In that single moment, the world around us faded into a beautiful blur. Your smile lit up something inside me that I didn't know existed. It was the beginning of everything — the start of us, the birth of a love story that would change my life forever.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="2.jpg" alt="The First Spark">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Chapter Two</p>
+                            <h3 class="timeline-title">The First Spark</h3>
+                            <p class="timeline-description">
+                                Our first conversation felt like coming home. The way you laughed, the way you saw the world — everything about you captivated me. Hours felt like minutes, and I knew with absolute certainty that I wanted to know every part of you, every story, every dream.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="3.jpg" alt="Adventures Together">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Chapter Three</p>
+                            <h3 class="timeline-title">Adventures Together</h3>
+                            <p class="timeline-description">
+                                Every adventure with you became a treasure. From spontaneous road trips to quiet evenings watching the sunset, you turned ordinary moments into extraordinary memories. With you, even the simplest things feel magical, because it's not about where we are — it's about being together.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="4.jpg" alt="Growing Together">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Chapter Four</p>
+                            <h3 class="timeline-title">Growing Together</h3>
+                            <p class="timeline-description">
+                                Through every challenge and triumph, we've become stronger. You've been my rock, my inspiration, my safe haven. Together, we've laughed until our stomachs hurt, cried on each other's shoulders, and built a love that's resilient, deep, and true. You've made me a better person.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-image">
+                            <img src="5.jpg" alt="Our Forever">
+                        </div>
+                        <div class="timeline-content">
+                            <p class="timeline-date">Chapter Five</p>
+                            <h3 class="timeline-title">Our Forever</h3>
+                            <p class="timeline-description">
+                                This isn't the end of our story — it's just the beginning of forever. Every day with you is a new page filled with love, laughter, and dreams coming true. I promise to stand by your side, to love you fiercely, and to make every moment count. Because with you, I've found my always.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Message -->
+        <section class="finale">
+            <div class="finale-ornament"></div>
+            <h2 class="finale-title">To My Kalina</h2>
+            <p class="finale-message">
+                You are my greatest adventure, my sweetest dream, and my most beautiful reality. Thank you for choosing me, for loving me, and for being the most incredible person I know. Here's to us — to our past, our present, and the infinite future ahead.
+            </p>
+            <p class="signature">Forever Yours ♡</p>
+        </section>
     </div>
 
-    <button class="btn" disabled>
-      Waiting for 12:00 AM…
-    </button>
-  </div>
+    <script>
+        // Floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(particle);
 
-  <!-- AFTER MIDNIGHT: Full anniversary page -->
-  <div id="anniversary-screen" class="container hidden">
-    <div class="script">To my love,</div>
-    <h1>Happy Anniversary ❤️</h1>
-    <p>
-      Today is our day. I’m so grateful that somehow, out of everyone in this world,
-      I get to call <span class="highlight">you</span> mine.
-    </p>
+            setTimeout(() => particle.remove(), 10000);
+        }
 
-    <div class="card">
-      <h2>What you mean to me</h2>
-      <p>
-        You are my safe place, my favourite notification, my calm and my chaos,
-        all wrapped into one person. With you, the ordinary moments feel special,
-        and the hard days feel lighter.
-      </p>
-      <p>
-        Thank you for your patience, your kindness, your laughs, your late-night
-        talks, and the way you understand me even when I don’t say anything at all.
-      </p>
-      <p>
-        I don’t know what the future holds in detail, but I know the one thing I’m
-        sure of: I want you in it, always.
-      </p>
+        setInterval(createParticle, 500);
 
-      <h2>My little promise to you</h2>
-      <p>
-        I promise to keep choosing you every single day. To support your dreams,
-        to listen when you speak, to make you feel loved, seen, and cherished—
-        not just on our anniversary, but on all the quiet days in between.
-      </p>
-      <p>
-        I’ll keep working on myself, not just for me, but for us. So that the
-        person standing next to you is someone you can always be proud of.
-      </p>
+        // Timeline scroll animation
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-      <p class="signature">
-        With all my love,<br />
-        <span class="highlight">[Your Name]</span> 💞
-      </p>
-    </div>
-  </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-  <script>
-    // === 1. Set target: midnight tonight (local time) ===
-    const now = new Date();
-    // Midnight TONIGHT (00:00 of the next calendar day)
-    const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
 
-    const countdownScreen = document.getElementById("countdown-screen");
-    const anniversaryScreen = document.getElementById("anniversary-screen");
+        // Smooth scroll for scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
 
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
-
-      if (diff <= 0) {
-        // Time reached: show anniversary screen
-        countdownScreen.classList.add("hidden");
-        anniversaryScreen.classList.remove("hidden");
-        return;
-      }
-
-      const totalSeconds = Math.floor(diff / 1000);
-      const days = Math.floor(totalSeconds / (3600 * 24));
-      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      daysEl.textContent = days;
-      hoursEl.textContent = String(hours).padStart(2, "0");
-      minutesEl.textContent = String(minutes).padStart(2, "0");
-      secondsEl.textContent = String(seconds).padStart(2, "0");
-    }
-
-    // Initial check (if she opens after midnight, it will go straight to anniversary)
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-
-    // === 2. Create floating hearts in the background ===
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      const size = Math.random() * 12 + 10; // 10–22 px
-      heart.style.width = size + "px";
-      heart.style.height = size + "px";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 4 + 6 + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 12000);
-    }
-
-    setInterval(createHeart, 700);
-  </script>
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.body.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    </script>
 </body>
 </html>
